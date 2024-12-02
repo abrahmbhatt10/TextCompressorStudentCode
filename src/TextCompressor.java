@@ -28,6 +28,9 @@
  *  @author Zach Blick, Agastya Brahmbhatt
  */
 public class TextCompressor {
+private static int count = 8;
+private static int MAX_COUNT_SIZE = 255;
+
 
     private static void compress() {
         // TODO: Complete the compress() method
