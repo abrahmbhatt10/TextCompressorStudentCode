@@ -30,7 +30,6 @@
 public class TextCompressor {
 
     private static void compress() {
-
         // TODO: Complete the compress() method
 
         BinaryStdOut.close();
