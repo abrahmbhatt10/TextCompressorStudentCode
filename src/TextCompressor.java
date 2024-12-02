@@ -25,7 +25,7 @@
  *  The {@code TextCompressor} class provides static methods for compressing
  *  and expanding natural language through textfile input.
  *
- *  @author Zach Blick, YOUR NAME HERE
+ *  @author Zach Blick, Agastya Brahmbhatt
  */
 public class TextCompressor {
 
