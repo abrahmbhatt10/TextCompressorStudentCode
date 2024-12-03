@@ -34,7 +34,11 @@ private static int MAX_COUNT_SIZE = 255;
 
     private static void compress() {
         // TODO: Complete the compress() method
-
+        String s = BinaryStdIn.readString();
+        int
+        for(int i = 0; i < s.length(); i++){
+            s.charAt(i);
+        }
         BinaryStdOut.close();
     }
 
