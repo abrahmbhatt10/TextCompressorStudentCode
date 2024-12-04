@@ -226,7 +226,7 @@ public final class BinaryStdOut {
      * @throws IllegalArgumentException if {@code x} is not between 0 and 255.
      */
     public static void write(char x) {
-        if (x < 0 || x >= 256) throw new IllegalArgumentException("Illegal 8-bit char = " + x);
+        //if (x < 0 || x >= 256) throw new IllegalArgumentException("Illegal 8-bit char = " + x);
         writeByte(x);
     }
 
