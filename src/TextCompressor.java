@@ -39,6 +39,10 @@ private static String punctuationString = " .,;!?:\"";
         String inputWord = "";
         Character currentLetter = 0;
         boolean dictFlag = false;
+        /*
+            Add the punctuation string to the dictionary hash table.
+            Each punctuation mark is its own string.
+         */
         for(int i = 0; i < punctuationString.length(); i++)
         {
             wordCount++;
