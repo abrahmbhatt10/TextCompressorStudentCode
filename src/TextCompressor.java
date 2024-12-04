@@ -56,6 +56,10 @@ private static String punctuationString = ".,;!?:\"";
                     }
                     BinaryStdOut.write(my_dict.get(inputWord));
                 }
+                else{
+                    wordCount++;
+                    my_dict.put(inputWord, wordCount);
+                }
                 BinaryStdOut.write(currentLetter);
             }
             else{
