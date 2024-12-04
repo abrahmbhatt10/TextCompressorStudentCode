@@ -41,6 +41,7 @@ private static String punctuationString = ".,;!?:\"";
         String inputWord = "";
         Character inputWordLen = 0;
         Character currentLetter = 0;
+        boolean dictFlag = false;
         while(!BinaryStdIn.isEmpty()){
             currentLetter = BinaryStdIn.readChar();
             if(currentLetter == ' ') {
@@ -49,7 +50,10 @@ private static String punctuationString = ".,;!?:\"";
             else if(punctuationString.contains(currentLetter.toString()))
             {
                 if(my_dict.containsKey(inputWord)){
-                    BinaryStdOut.write(startDict);
+                    if(!dictFlag){
+                        BinaryStdOut.write(startDict);
+                        dictFlag = true;
+                    }
                     BinaryStdOut.write(my_dict.get(inputWord));
                 }
                 BinaryStdOut.write(currentLetter);
