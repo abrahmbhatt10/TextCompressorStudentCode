@@ -33,7 +33,7 @@ public class TextCompressor {
 private static int count = 8;
 private static int MAX_COUNT_SIZE = 255;
 private static Character startDict = 0;
-private static String punctuationString = ".,;!?:\"";
+private static String punctuationString = " .,;!?:\"";
 
     private static void compress() {
         Hashtable<String,Character> my_dict = new Hashtable<String,Character>();
@@ -44,10 +44,7 @@ private static String punctuationString = ".,;!?:\"";
         boolean dictFlag = false;
         while(!BinaryStdIn.isEmpty()){
             currentLetter = BinaryStdIn.readChar();
-            if(currentLetter == ' ') {
-
-            }
-            else if(punctuationString.contains(currentLetter.toString()))
+            if(punctuationString.contains(currentLetter.toString()))
             {
                 if(my_dict.containsKey(inputWord)){
                     if(!dictFlag){
@@ -65,6 +62,7 @@ private static String punctuationString = ".,;!?:\"";
                     }
                     BinaryStdOut.write(inputWord);
                 }
+                inputWord = "";
                 BinaryStdOut.write(currentLetter);
             }
             else{
