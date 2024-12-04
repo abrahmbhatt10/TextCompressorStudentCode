@@ -63,6 +63,7 @@ private static String punctuationString = ".,;!?:\"";
                         BinaryStdOut.write(startDict);
                         dictFlag = false;
                     }
+                    BinaryStdOut.write(inputWord);
                 }
                 BinaryStdOut.write(currentLetter);
             }
