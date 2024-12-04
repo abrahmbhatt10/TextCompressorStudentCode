@@ -105,7 +105,9 @@ private static String punctuationString = " .,;!?:\"";
                 dictFlag = !dictFlag;
             }
             if(dictFlag){
-                BinaryStdOut.write(my_dict.get(currentLetter));
+                if(my_dict.get(currentLetter) != null){
+                    BinaryStdOut.write(my_dict.get(currentLetter));
+                }
             }
             else if(punctuationString.contains(currentLetter.toString())) {
                 BinaryStdOut.write(inputWord);
