@@ -30,8 +30,6 @@ import java.util.Hashtable;
  *  @author Zach Blick, Agastya Brahmbhatt
  */
 public class TextCompressor {
-private static int count = 8;
-private static int MAX_COUNT_SIZE = 255;
 private static Character startDict = 0;
 private static String punctuationString = " .,;!?:\"";
 
@@ -39,9 +37,16 @@ private static String punctuationString = " .,;!?:\"";
         Hashtable<String,Character> my_dict = new Hashtable<String,Character>();
         Character wordCount = 0;
         String inputWord = "";
-        Character inputWordLen = 0;
         Character currentLetter = 0;
         boolean dictFlag = false;
+        for(int i = 0; i < punctuationString.length(); i++)
+        {
+            wordCount++;
+            currentLetter = punctuationString.charAt(i);
+            inputWord = currentLetter.toString();
+            my_dict.put(inputWord,wordCount);
+        }
+        inputWord = "";
         while(!BinaryStdIn.isEmpty()){
             currentLetter = BinaryStdIn.readChar();
             if(punctuationString.contains(currentLetter.toString()))
@@ -51,29 +56,68 @@ private static String punctuationString = " .,;!?:\"";
                         BinaryStdOut.write(startDict);
                         dictFlag = true;
                     }
-                    BinaryStdOut.write(my_dict.get(inputWord));
+                    if(inputWord.length() > 0)
+                        BinaryStdOut.write(my_dict.get(inputWord));
                 }
                 else{
-                    wordCount++;
-                    my_dict.put(inputWord, wordCount);
-                    if(dictFlag){
-                        BinaryStdOut.write(startDict);
-                        dictFlag = false;
+                    if(inputWord.length() > 0) {
+                        wordCount++;
+                        my_dict.put(inputWord, wordCount);
+                        if(dictFlag){
+                            BinaryStdOut.write(startDict);
+                            dictFlag = false;
+                        }
+                        BinaryStdOut.write(inputWord);
                     }
-                    BinaryStdOut.write(inputWord);
                 }
+                inputWord = "";
+                if(dictFlag)
+                {
+                    BinaryStdOut.write(my_dict.get(currentLetter.toString()));
+                } else {
+                    BinaryStdOut.write(currentLetter);
+                }
+            }
+            else{
+                inputWord += currentLetter.toString();
+            }
+        }
+        BinaryStdOut.close();
+    }
+
+    private static void expand() {
+        Hashtable<Character, String> my_dict = new Hashtable<Character, String>();
+        Character wordCount = 0;
+        String inputWord = "";
+        Character currentLetter = 0;
+        boolean dictFlag = false;
+        for(int i = 0; i < punctuationString.length(); i++)
+        {
+            wordCount++;
+            currentLetter = punctuationString.charAt(i);
+            inputWord = currentLetter.toString();
+            my_dict.put(wordCount,inputWord);
+        }
+        inputWord = "";
+        while (!BinaryStdIn.isEmpty()) {
+            currentLetter = BinaryStdIn.readChar();
+            if(currentLetter == startDict){
+                dictFlag != dictFlag;
+            }
+            if(dictFlag){
+                BinaryStdOut.write(my_dict.get(currentLetter));
+            }
+            else if(punctuationString.contains(currentLetter.toString())) {
+                BinaryStdOut.write(inputWord);
+                wordCount++;
+                my_dict.put(wordCount, inputWord);
                 inputWord = "";
                 BinaryStdOut.write(currentLetter);
             }
             else{
                 inputWord += currentLetter.toString();
             }
-            BinaryStdOut.close();
         }
-    }
-
-    private static void expand() {
-
         BinaryStdOut.close();
     }
 
