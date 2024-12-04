@@ -21,6 +21,8 @@
  *  = 43.54% compression ratio!
  ******************************************************************************/
 
+import java.util.Hashtable;
+
 /**
  *  The {@code TextCompressor} class provides static methods for compressing
  *  and expanding natural language through textfile input.
@@ -30,23 +32,36 @@
 public class TextCompressor {
 private static int count = 8;
 private static int MAX_COUNT_SIZE = 255;
-
+private static Character startDict = 0;
+private static String punctuationString = ".,;!?:\"";
 
     private static void compress() {
-        // TODO: Complete the compress() method
+        Hashtable<String,Character> my_dict = new Hashtable<String,Character>();
+        Character wordCount = 0;
+        String inputWord = "";
+        Character inputWordLen = 0;
+        Character currentLetter = 0;
         while(!BinaryStdIn.isEmpty()){
-            String s = BinaryStdIn.readString();
-            int[] charArr = new int[s.length()];
-            for(int i = 0; i < s.length(); i++){
-                charArr[i] = s.charAt(i);
+            currentLetter = BinaryStdIn.readChar();
+            if(currentLetter == ' ') {
+
+            }
+            else if(punctuationString.contains(currentLetter.toString()))
+            {
+                if(my_dict.containsKey(inputWord)){
+                    BinaryStdOut.write(startDict);
+                    BinaryStdOut.write(my_dict.get(inputWord));
+                }
+                BinaryStdOut.write(currentLetter);
+            }
+            else{
+                inputWord += currentLetter.toString();
             }
             BinaryStdOut.close();
         }
     }
 
     private static void expand() {
-
-        // TODO: Complete the expand() method
 
         BinaryStdOut.close();
     }
