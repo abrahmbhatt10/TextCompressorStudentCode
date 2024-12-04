@@ -57,7 +57,7 @@ private static String punctuationString = " .,;!?:\"";
                         dictFlag = true;
                     }
                     if(inputWord.length() > 0)
-                        BinaryStdOut.write(my_dict.get(inputWord));
+                        BinaryStdOut.write((Character)(my_dict.get(inputWord)));
                 }
                 else{
                     if(inputWord.length() > 0) {
@@ -102,7 +102,7 @@ private static String punctuationString = " .,;!?:\"";
         while (!BinaryStdIn.isEmpty()) {
             currentLetter = BinaryStdIn.readChar();
             if(currentLetter == startDict){
-                dictFlag != dictFlag;
+                dictFlag = !dictFlag;
             }
             if(dictFlag){
                 BinaryStdOut.write(my_dict.get(currentLetter));
