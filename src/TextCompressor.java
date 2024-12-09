@@ -69,24 +69,26 @@ public class TextCompressor {
             st[i] = "" + (char)i;
         }
         st[i++] = "";
-
-        int codeword = BinaryStdIn.readInt(WIDTH);
-        String val = st[codeword];
-        while(true)
-        {
-            BinaryStdOut.write(val);
+        int codeword;
+        while(!BinaryStdIn.isEmpty()){
             codeword = BinaryStdIn.readInt(WIDTH);
-            if((codeword == R) || (codeword == EOF)){
-                break;
+            String val = st[codeword];
+            while(true)
+            {
+                BinaryStdOut.write(val);
+                codeword = BinaryStdIn.readInt(WIDTH);
+                if((codeword == R) || (codeword == EOF)){
+                    break;
+                }
+                String s = st[codeword];
+                if(i == codeword){
+                    s = val + val.charAt(0);
+                }
+                if(i < L){
+                    st[i++] = val + s.charAt(0);
+                }
+                val = s;
             }
-            String s = st[codeword];
-            if(i == codeword){
-                s = val + val.charAt(0);
-            }
-            if(i < L){
-                st[i++] = val + s.charAt(0);
-            }
-            val = s;
         }
         BinaryStdOut.close();
     }
