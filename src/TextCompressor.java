@@ -77,7 +77,7 @@ public class TextCompressor {
             {
                 BinaryStdOut.write(val);
                 codeword = BinaryStdIn.readInt(WIDTH);
-                if((codeword == R) || (codeword == EOF)){
+                if(codeword == EOF){
                     break;
                 }
                 String s = st[codeword];
@@ -88,6 +88,9 @@ public class TextCompressor {
                     st[i++] = val + s.charAt(0);
                 }
                 val = s;
+            }
+            if(codeword == EOF){
+                break;
             }
         }
         BinaryStdOut.close();
