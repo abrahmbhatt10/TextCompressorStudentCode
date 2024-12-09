@@ -33,6 +33,7 @@ public class TextCompressor {
 private static Character startDict = 0;
 private static String punctuationString = " .,;!?:\"";
 
+
     private static void compress() {
         Hashtable<String,Character> my_dict = new Hashtable<String,Character>();
         Character wordCount = 0;
