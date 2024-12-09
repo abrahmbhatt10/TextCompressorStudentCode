@@ -33,7 +33,6 @@ public class TextCompressor {
      */
     private static final int WIDTH = 12;
     private static final int R = 256;
-    private static final int EOF = 128;
     private static final int L = 4096;
 
     private static void compress() {
@@ -55,7 +54,7 @@ public class TextCompressor {
                 input = input.substring(t);
             }
         }
-        BinaryStdOut.write(EOF, WIDTH);
+        BinaryStdOut.write(R, WIDTH);
         BinaryStdOut.close();
     }
 
@@ -77,7 +76,7 @@ public class TextCompressor {
             {
                 BinaryStdOut.write(val);
                 codeword = BinaryStdIn.readInt(WIDTH);
-                if(codeword == EOF){
+                if(codeword == R){
                     break;
                 }
                 String s = st[codeword];
@@ -89,7 +88,7 @@ public class TextCompressor {
                 }
                 val = s;
             }
-            if(codeword == EOF){
+            if(codeword == R){
                 break;
             }
         }
