@@ -29,7 +29,7 @@ import java.util.Hashtable;
  *
  *  @author Zach Blick, Agastya Brahmbhatt
  */
-public class TextCompressor {
+public class OldTextCompressor {
 private static Character startDict = 0;
 private static String punctuationString = " .,;!?:\"";
 
