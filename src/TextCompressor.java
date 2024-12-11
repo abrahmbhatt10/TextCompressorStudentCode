@@ -74,29 +74,34 @@ public class TextCompressor {
          */
         int i;
         String[] st = new String[L];
-        for(i = 0; i < R; i++){
+        for(i = 0; i < R; i++){ // Initializing the initial dictionary set of single characters.
             st[i] = "" + (char)i;
         }
-        st[i++] = "";
+        st[i++] = ""; // That is the end of file symbol.
         int codeword;
+        String val;
+        String s;
+        // Processing codes till the end of file.
         while(!BinaryStdIn.isEmpty()){
+            // Get one code word at a time
             codeword = BinaryStdIn.readInt(WIDTH);
-            String val = st[codeword];
+            val = st[codeword]; // Gives the corresponding string value from the dictionary.
+            //
             while(true)
             {
-                BinaryStdOut.write(val);
-                codeword = BinaryStdIn.readInt(WIDTH);
-                if(codeword == R){
+                BinaryStdOut.write(val); // Write out the initial string
+                codeword = BinaryStdIn.readInt(WIDTH); // read the next code word
+                if(codeword == R){ // If the code word is the end of file, then break.
                     break;
                 }
-                String s = st[codeword];
-                if(i == codeword){
+                s = st[codeword]; // else you get the string for the next code word.
+                if(i == codeword){ // if the codeword isn't in the dictionary, then we apply the p+p's first character formula.
                     s = val + val.charAt(0);
                 }
-                if(i < L){
-                    st[i++] = val + s.charAt(0);
+                if(i < L){ // This is a check that dictionary size is not exceeded.
+                    st[i++] = val + s.charAt(0); // adding the new code string into the dictionary.
                 }
-                val = s;
+                val = s; //
             }
             if(codeword == R){
                 break;
