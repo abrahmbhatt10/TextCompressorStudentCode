@@ -101,7 +101,7 @@ public class TextCompressor {
                 if(i < L){ // This is a check that dictionary size is not exceeded.
                     st[i++] = val + s.charAt(0); // adding the new code string into the dictionary.
                 }
-                val = s; //
+                val = s; // Makes val s, so it goes to the next processing code.
             }
             if(codeword == R){
                 break;
