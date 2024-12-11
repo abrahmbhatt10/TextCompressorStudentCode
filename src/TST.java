@@ -121,23 +121,4 @@ public class TST {
         printTST(n.mid, s);
         printTST(n.right, s);
     }
-
-    /*
-        Below function passes in code and returns the String.
-     */
-    public String lookup(int code) {
-        /*
-        if (n == null) return EMPTY;
-
-        char current = s.charAt(depth);
-        if (current < n.c)
-            return lookup(s, n.left, depth);
-        else if (current > n.c)
-            return lookup(s, n.right, depth);
-        else if (depth < s.length() - 1)
-            return lookup(s, n.mid, depth + 1);
-        else return n.code;
-         */
-        return "Test";
-    }
 }
