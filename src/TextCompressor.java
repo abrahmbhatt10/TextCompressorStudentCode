@@ -42,14 +42,20 @@ public class TextCompressor {
         for(int i = 0; i < R; i++){
             dict.insert("" + (char)i, i);
         }
-        // The string matching lookup code from the input text will get R + 1 code.
+        // The string matching lookup code from the input text will get R + 1 code (stored as the prefix nodes in the trie).
         int code = R+1;
+        String s; // Variable to hold longest prefix
+        int t; // Variable for the length of the string.
+        // Get input file strings one at a time till end of file.
         while(!BinaryStdIn.isEmpty()){
+            // Reading the input file string
             input = BinaryStdIn.readString();
+            // Compress with codes till input length becomes 0.
             while(input.length() > 0){
-                String s = dict.getLongestPrefix(input);
+                // Get the longest matching prefix.
+                s = dict.getLongestPrefix(input);
                 BinaryStdOut.write(dict.lookup(s), WIDTH);
-                int t = s.length();
+                t = s.length();
                 if(t < input.length() && code < L){
                     dict.insert(input.substring(0, t + 1), code++);
                 }
