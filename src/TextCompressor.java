@@ -54,10 +54,11 @@ public class TextCompressor {
             while(input.length() > 0){
                 // Get the longest matching prefix.
                 s = dict.getLongestPrefix(input);
+                // S is matching and has a corresponding code that is written to the compressed bin.
                 BinaryStdOut.write(dict.lookup(s), WIDTH);
-                t = s.length();
-                if(t < input.length() && code < L){
-                    dict.insert(input.substring(0, t + 1), code++);
+                t = s.length(); // gives length of the matched string
+                if(t < input.length() && code < L){ // just a check that we aren't exceeding the dictionary max length 4096
+                    dict.insert(input.substring(0, t + 1), code++); // includes the one more look-up character to create that longer prefix and add that to the dictionary.
                 }
                 input = input.substring(t);
             }
