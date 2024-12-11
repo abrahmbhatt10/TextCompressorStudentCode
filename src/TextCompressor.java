@@ -103,7 +103,7 @@ public class TextCompressor {
                 }
                 val = s; // Makes val s, so it goes to the next processing code.
             }
-            if(codeword == R){
+            if(codeword == R){ // this is end of file, so break.
                 break;
             }
         }
