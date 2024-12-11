@@ -29,18 +29,20 @@
  */
 public class TextCompressor {
     /*
-        Below code taken from Sedgewick and Wayne's Algorithms 4th edition.
+        Sedgewick and Wayne's Algorithms 4th edition helped me write the below code.
      */
-    private static final int WIDTH = 12;
-    private static final int R = 256;
-    private static final int L = 4096;
+    private static final int WIDTH = 12; // Number of bits used to store a character (A, B, ...) in the compressed format.
+    private static final int R = 256; // Used for end of file
+    private static final int L = 4096; // 2^12, so code word can go up to 0 to 4095.
 
     private static void compress() {
-        String input;
-        TST dict = new TST();
+        String input; // Variable used to save data from the input file.
+        TST dict = new TST(); // Variable used to store string code pairs.
+        // the for loop below is used to initialize 0 to 255 characters with their codes.
         for(int i = 0; i < R; i++){
             dict.insert("" + (char)i, i);
         }
+        // The string matching lookup code from the input text will get R + 1 code.
         int code = R+1;
         while(!BinaryStdIn.isEmpty()){
             input = BinaryStdIn.readString();
@@ -60,7 +62,7 @@ public class TextCompressor {
 
     private static void expand() {
         /*
-            Below code taken from Sedgewick & Wayne Algortihms 4th Edition
+            Sedgewick & Wayne Algortihms 4th Edition helped me write the below code
          */
         int i;
         String[] st = new String[L];
