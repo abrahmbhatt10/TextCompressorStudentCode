@@ -110,6 +110,7 @@ public class TextCompressor {
         BinaryStdOut.close();
     }
 
+
     public static void main(String[] args) {
         if      (args[0].equals("-")) compress();
         else if (args[0].equals("+")) expand();
