@@ -60,9 +60,10 @@ public class TextCompressor {
                 if(t < input.length() && code < L){ // just a check that we aren't exceeding the dictionary max length 4096
                     dict.insert(input.substring(0, t + 1), code++); // includes the one more look-up character to create that longer prefix and add that to the dictionary.
                 }
-                input = input.substring(t);
+                input = input.substring(t); // discarding the initial t characters
             }
         }
+        // write end of file
         BinaryStdOut.write(R, WIDTH);
         BinaryStdOut.close();
     }
